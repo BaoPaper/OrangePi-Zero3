@@ -21,7 +21,7 @@ draw = ImageDraw.Draw(image)
 
 # 定义字体和字体大小
 font_path = "apple-M.ttf"  # 替换为实际的字体文件路径
-font_size = 20
+font_size = 10
 font = ImageFont.truetype(font_path, font_size)
 
 # 获取天气信息函数
@@ -48,7 +48,8 @@ result = get_weather(city_name)
 draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
 # 在图像上绘制天气信息文本
-draw.text((10, 30), result, font=font, fill=255)
+while True:
+    draw.text((10, 30), result, font=font, fill=255)
 
-# 在屏幕上显示图像
-device.display(image)
+    # 在屏幕上显示图像
+    device.display(image)

@@ -113,7 +113,7 @@ def main():
                # 清除之前的内容
                draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
                top = 0
-               
+
                # 绘制 OrangePi Zero 3 字样
                # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
                # top += 18
@@ -128,7 +128,7 @@ def main():
                top += 12
                draw.text((0, top), "IP: " + IP, font=font_small, fill=255)
                # 绘制分隔线
-               draw.line((0, 17.5, width, 17.5), fill=255)
+               draw.line((0, 65, width, 17.5), fill=255)
                pass
             else:
                current_time = datetime.datetime.now().strftime("%H:%M:%S")

@@ -63,7 +63,7 @@ def show_poweron_text(draw, font_Big, width, height):
 
     # 在图像下方绘制文本 "Hello"
     # draw.text((40, 44), "HELLO", font=font, fill=255)
-    
+
     # 在屏幕上显示图像
     device.display(image_to_display)
 
@@ -137,9 +137,9 @@ def main():
                draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
                top += 12
                draw.text((0, top), f"Uptime: {format_uptime(uptime)}", font=font_small, fill=255)
-               draw.line((0, 17.5, width, 17.5), fill=255)
-               top += 16
-               draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
+               # draw.line((0, 17.5, width, 17.5), fill=255)
+               # top += 16
+               # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
                pass
         # 如果距离上次切换时间超过10秒，切换状态
         if time.time() - last_switch_time >= 10:

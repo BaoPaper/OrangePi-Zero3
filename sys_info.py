@@ -130,6 +130,8 @@ def main():
                top += 12
                # 绘制分隔线
                draw.line((0, top + 5, width, top + 5), fill=255)
+               top += 12
+               draw.text((0, top), "Hello World!", font=font_small, fill=255)
                pass
             else:
                current_time = datetime.datetime.now().strftime("%H:%M:%S")

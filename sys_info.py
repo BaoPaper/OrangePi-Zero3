@@ -29,7 +29,7 @@ def get_system_info():
     CPU = f"CPU: {cpu_percent:.2f}%"
 
     mem = psutil.virtual_memory()
-    mem_usage = f"Mem: {mem.used/1024/1024:.1f}/{mem.total/1024/1024:.1f} GB {mem.percent:.1f}%"
+    mem_usage = f"Mem: {mem.used/1024/1024/1024:.1f}/{mem.total/1024/1024/1024:.1f} GB {mem.percent:.1f}%"
     
     disk = psutil.disk_usage('/')
     disk_usage = f"Disk: {disk.used/1024/1024/1024:.1f}/{disk.total/1024/1024/1024:.1f} GB {disk.percent}%"

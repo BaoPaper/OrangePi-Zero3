@@ -52,7 +52,7 @@ def show_poweron_text(draw, font_Big, width, height):
     font = ImageFont.truetype(font_path, font_size)
 
     # 加载图像
-    image_path = "1.png"
+    image_path = "3.png"
     image_to_display = Image.open(image_path).convert("1")  # 转换为单色模式
 
     # 缩放图像以适应屏幕大小

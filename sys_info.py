@@ -113,9 +113,11 @@ def main():
                # 清除之前的内容
                draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
                top = 0
+               
                # 绘制 OrangePi Zero 3 字样
-               draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
-               top += 18
+               # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
+               # top += 18
+
                # 重新绘制数据
                draw.text((0, top), CPU, font=font_small, fill=255)
                draw.text((80, top), cput + " °C", font=font_small, fill=255)

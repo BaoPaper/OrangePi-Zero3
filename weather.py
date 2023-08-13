@@ -44,6 +44,9 @@ def get_weather(city_name):
 city_name = '沙市区'
 result = get_weather(city_name)
 
+# 清除屏幕内容
+draw.rectangle((0, 0, width, height), outline=0, fill=0)
+
 # 在图像上绘制天气信息文本
 draw.text((10, 30), result, font=font, fill=255)
 

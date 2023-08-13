@@ -58,7 +58,6 @@ def get_weather(city_name):
         return '请求失败'
 
 city_name = '沙市区'
-result = get_weather(city_name)
 
 
 # 格式化运行时间
@@ -111,6 +110,8 @@ def main():
     last_switch_time = time.time()# 获取当前时间
     showing_system_info = True    # 是否显示系统信息
     poweron_displayed = False    # 是否已显示开机信息
+
+    result = get_weather(city_name)
 
     # 获取系统启动时间
     boot_time = psutil.boot_time()

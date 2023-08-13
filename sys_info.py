@@ -25,17 +25,20 @@ device = ssd1306(serial)
 
 # 获取系统信息
 def get_system_info():
-    cmd = "top -bn2 -d 0.1 | grep %Cpu | awk 'NR==2{printf \"CPU: %.2f%%\",100-$8}'"
-    CPU = subprocess.check_output(cmd, shell=True).decode('utf-8')
-    cmd = "free -m | awk 'NR==2{printf \"Mem: %.1f/%.1f GB %.1f%%\", $3/1024,$2/1024,$3*100/$2 }'"
-    MemUsage = os.popen(cmd).read().strip()
-    cmd = 'df -h | awk \'$NF=="/"{printf "Disk: %d/%d GB %s", $3,$2,$5}\''
-    Disk = os.popen(cmd).read().strip()
-    cmd = "hostname -I | cut -d' ' -f1"
-    IP = os.popen(cmd).read().strip()
+    cpu_percent = psutil.cpu_percent(interval=0.1)
+    CPU = f"CPU: {cpu_percent:.2f}%"
+
+    mem = psutil.virtual_memory()
+    mem_usage = f"Mem: {mem.used/1024/1024:.1f}/{mem.total/1024/1024:.1f} GB {mem.percent:.1f}%"
+    
+    disk = psutil.disk_usage('/')
+    disk_usage = f"Disk: {disk.used/1024/1024/1024:.1f}/{disk.total/1024/1024/1024:.1f} GB {disk.percent}%"
+
+    IP = subprocess.run(["hostname", "-I"], capture_output=True, text=True).stdout.strip().split()[0]
     cmd = "cat /sys/class/thermal/thermal_zone0/temp | awk '{printf \"%.1f\", $0/1000}'"
     cput = subprocess.check_output(cmd, shell=True).decode('utf-8')
-    return CPU, MemUsage, Disk, IP, cput
+
+    return CPU, mem_usage, disk_usage, IP, cput
 
 
 # 格式化运行时间

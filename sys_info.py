@@ -58,7 +58,6 @@ def get_weather(city_name):
         return '请求失败'
 
 city_name = '沙市区'
-result = get_weather(city_name)
 
 # 格式化运行时间
 def format_uptime(uptime):
@@ -128,6 +127,7 @@ def main():
             # 如果显示系统信息
             if showing_system_info:
                CPU, MemUsage, Disk, IP, cput = get_system_info()
+               result = get_weather(city_name)
 
                # 清除之前的内容
                draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)

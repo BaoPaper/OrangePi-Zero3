@@ -58,6 +58,8 @@ def get_weather(city_name):
         return '请求失败'
 
 city_name = '沙市区'
+result = get_weather(city_name)
+
 
 # 格式化运行时间
 def format_uptime(uptime):

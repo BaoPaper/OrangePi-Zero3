@@ -40,6 +40,24 @@ def get_system_info():
 
     return CPU, mem_usage, disk_usage, IP, cput
 
+# 获取天气信息
+def get_weather(city_name):
+    url = f'https://api.axtn.net/api/weather?name={city_name}'
+
+    response = requests.get(url)
+    data = response.json()
+
+    if data['code'] == 200:
+        city = data['city']
+        weather = data['weather']
+        temperature = data['temperature']
+
+        return f'{city} {weather} {temperature}℃'
+    else:
+        return '请求失败'
+
+city_name = '沙市区'
+result = get_weather(city_name)
 
 # 格式化运行时间
 def format_uptime(uptime):
@@ -144,7 +162,7 @@ def main():
                # top += 18
                draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
                top += 12
-               draw.text((0, top), f"Uptime: {format_uptime(uptime)}", font=font_small, fill=255)
+               draw.text((0, top), result, font=font_small, fill=255)
                # draw.line((0, 17.5, width, 17.5), fill=255)
                # top += 16
                # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)

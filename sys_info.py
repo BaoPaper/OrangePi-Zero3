@@ -153,7 +153,7 @@ def main():
 
         # 在 OLED 屏幕上显示图像
         device.display(image)
-        time.sleep(10)
+        time.sleep(3)
 
 if __name__ == "__main__":
     try:

@@ -128,6 +128,7 @@ def main():
                top += 12
                draw.text((0, top), "IP: " + IP, font=font_small, fill=255)
                # 绘制分隔线
+               top += 12
                draw.line((0, 17.5, width, 17.5), fill=255)
                pass
             else:

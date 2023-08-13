@@ -132,8 +132,8 @@ def main():
 
                draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
                top = 0
-               draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
-               top += 18
+               # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
+               # top += 18
                draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
                top += 12
                draw.text((0, top), f"Uptime: {format_uptime(uptime)}", font=font_small, fill=255)

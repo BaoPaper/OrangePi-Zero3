@@ -127,7 +127,6 @@ def main():
             # 如果显示系统信息
             if showing_system_info:
                CPU, MemUsage, Disk, IP, cput = get_system_info()
-               result = get_weather(city_name)
 
                # 清除之前的内容
                draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
@@ -168,12 +167,10 @@ def main():
                # top += 16
                # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
                pass
-        # 如果距离上次切换时间超过10秒，切换状态
-        # if time.time() - last_switch_time >= 10:
-        #     showing_system_info = not showing_system_info
-        #     last_switch_time = time.time()
-
-
+        
+        # 如果距离天气刷新时间超过900秒，刷新天气信息
+        if time.time() - last_switch_time >= 10:
+            result = get_weather(city_name)
 
         # 在 OLED 屏幕上显示图像
         device.display(image)

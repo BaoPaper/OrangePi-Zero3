@@ -165,7 +165,7 @@ def main():
                # top += 18
                draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
                top += 12
-               draw.text((0, top), result, font=font_small, fill=255)
+               draw.text((0, top), result, font=font_large, fill=255)
                # draw.line((0, 17.5, width, 17.5), fill=255)
                # top += 16
                # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)

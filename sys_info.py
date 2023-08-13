@@ -142,9 +142,9 @@ def main():
                # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
                pass
         # 如果距离上次切换时间超过10秒，切换状态
-        if time.time() - last_switch_time >= 10:
-            showing_system_info = not showing_system_info
-            last_switch_time = time.time()
+        # if time.time() - last_switch_time >= 10:
+        #     showing_system_info = not showing_system_info
+        #     last_switch_time = time.time()
 
 
 

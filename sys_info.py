@@ -62,7 +62,8 @@ def show_poweron_text(draw, font_Big, width, height):
     draw = ImageDraw.Draw(image_to_display)
 
     # 在图像下方绘制文本 "Hello"
-    draw.text((40, 44), "HELLO", font=font, fill=255)
+    # draw.text((40, 44), "HELLO", font=font, fill=255)
+    
     # 在屏幕上显示图像
     device.display(image_to_display)
 

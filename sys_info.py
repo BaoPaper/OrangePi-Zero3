@@ -152,7 +152,7 @@ def main():
                # 绘制分隔线
                draw.line((0, top, width, top), fill=255)
                # top += 12
-               draw.text((0, top), result, font=font_small, fill=255)
+               draw.text((0, top), result, font=font_large, fill=255)
                pass
             # else:
             #    current_time = datetime.datetime.now().strftime("%H:%M:%S")

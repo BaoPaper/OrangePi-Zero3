@@ -33,19 +33,22 @@ def get_system_info():
 
 # 获取天气信息
 def get_weather(city_name):
-    url = f'https://api.axtn.net/api/weather?name={city_name}'
+    try:
+        url = f'https://api.axtn.net/api/weather?name={city_name}'
 
-    response = requests.get(url)
-    data = response.json()
+        response = requests.get(url)
+        data = response.json()
 
-    if data['code'] == 200:
-        city = data['city']
-        weather = data['weather']
-        temperature = data['temperature']
+        if data['code'] == 200:
+            city = data['city']
+            weather = data['weather']
+            temperature = data['temperature']
 
-        return f'{city} {weather} {temperature}℃'
-    else:
-        return '请求失败'
+            return f'{city} {weather} {temperature}℃'
+        else:
+            return '请求失败'
+    except Exception as e:
+        return f'发生异常：{str(e)}'
 
 city_name = '沙市区'
 

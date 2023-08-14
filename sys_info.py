@@ -132,7 +132,6 @@ def main():
                # 绘制分隔线
                draw.line((0, top, width, top), fill=255)
                draw.text((0, top), result, font=font_large, fill=255)
-               pass
         
         # 如果距离天气刷新时间超过900秒，刷新天气信息
         if time.time() - last_switch_time >= 900:
@@ -148,7 +147,3 @@ if __name__ == "__main__":
     except Exception as e:
         print("An error occurred:", str(e))
         serial.cleanup()  # 如果需要，确保在发生异常时进行清理操作
-
-
-
-

@@ -13,6 +13,8 @@ i2c_bus_number = 3 #定义i2c总线
 first_run = True  # 标记是否第一次运行脚本
 serial = i2c(port=i2c_bus_number, address=0x3C)  # 设置 OLED I2C 地址
 device = ssd1306(serial)
+location = ""  # 地理位置代码
+key = ""  # 和风天气API密钥
 
 # 获取系统信息
 def get_system_info():
@@ -32,25 +34,27 @@ def get_system_info():
     return CPU, mem_usage, disk_usage, IP, cput
 
 # 获取天气信息
-def get_weather(city_name):
-    try:
-        url = f'https://api.axtn.net/api/weather?name={city_name}'
+def get_weather():
+    url = "https://devapi.qweather.com/v7/weather/now"
 
-        response = requests.get(url)
+    params = {
+        "location": location,
+        "key": key
+    }
+
+    try:
+        response = requests.get(url, params=params)
         data = response.json()
 
-        if data['code'] == 200:
-            city = data['city']
-            weather = data['weather']
-            temperature = data['temperature']
+        if data['code'] == "200":
+            weather = data["now"]["text"]
+            temperature = data["now"]["temp"]
 
-            return f'{city} {weather} {temperature}℃'
+            return f'沙市区 {weather} {temperature}℃'
         else:
             return '请求失败'
     except Exception as e:
         return f'发生异常：{str(e)}'
-
-city_name = '沙市区'
 
 # 格式化运行时间
 def format_uptime(uptime):
@@ -99,7 +103,7 @@ def main():
     showing_system_info = True    # 是否显示系统信息
     poweron_displayed = False    # 是否已显示开机信息
 
-    result = get_weather(city_name)
+    result = get_weather()
 
     # 获取系统启动时间
     boot_time = psutil.boot_time()
@@ -137,7 +141,7 @@ def main():
         
         # 如果距离天气刷新时间超过900秒，刷新天气信息
         if time.time() - last_switch_time >= 900:
-            result = get_weather(city_name)
+            result = get_weather()
 
         # 在 OLED 屏幕上显示图像
         device.display(image)

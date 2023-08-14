@@ -7,7 +7,6 @@ from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import ImageFont
 from PIL import Image, ImageDraw
-import os
 import subprocess
 
 i2c_bus_number = 3 #定义i2c总线

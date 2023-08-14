@@ -16,13 +16,10 @@ process_name = "1.py"
 # 使用subprocess执行终止进程的命令
 subprocess.call(["pkill", "-f", process_name])
 
-
-
 i2c_bus_number = 3 #定义i2c总线
 first_run = True  # 标记是否第一次运行脚本
 serial = i2c(port=i2c_bus_number, address=0x3C)  # 设置 OLED I2C 地址
 device = ssd1306(serial)
-
 
 # 获取系统信息
 def get_system_info():
@@ -59,7 +56,6 @@ def get_weather(city_name):
 
 city_name = '沙市区'
 
-
 # 格式化运行时间
 def format_uptime(uptime):
     total_seconds = int(uptime.total_seconds())
@@ -88,7 +84,6 @@ def show_poweron_text(draw, font_Big, width, height):
 
     # 在屏幕上显示图像
     device.display(image_to_display)
-
 
 def main():
     global first_run
@@ -125,7 +120,6 @@ def main():
             time.sleep(3)
             device.display(image)
 
-
         if poweron_displayed and time.time() - last_switch_time >= 3:  # 等待3秒后开始切换显示内容
             # 如果显示系统信息
             # if showing_system_info:
@@ -134,10 +128,6 @@ def main():
                # 清除之前的内容
                draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
                top = 0
-
-               # 绘制 OrangePi Zero 3 字样
-               # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
-               # top += 18
 
                # 重新绘制数据
                draw.text((0, top), CPU, font=font_small, fill=255)
@@ -153,22 +143,6 @@ def main():
                draw.line((0, top, width, top), fill=255)
                # top += 12
                draw.text((0, top), result, font=font_large, fill=255)
-               pass
-            # else:
-            #    current_time = datetime.datetime.now().strftime("%H:%M:%S")
-            #    # 计算开机运行时间
-            #    uptime = datetime.datetime.now() - boot_time_datetime
-
-            #    draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
-            #    top = 0
-            #    # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
-            #    # top += 18
-            #    draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
-            #    top += 12
-            #    draw.text((0, top), result, font=font_small, fill=255)
-            #    # draw.line((0, 17.5, width, 17.5), fill=255)
-            #    # top += 16
-            #    # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
                pass
         
         # 如果距离天气刷新时间超过900秒，刷新天气信息

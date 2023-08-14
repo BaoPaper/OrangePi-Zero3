@@ -122,7 +122,7 @@ def main():
         if not poweron_displayed:       # 如果尚未显示开机信息
             show_poweron_text(draw, font_Big, width, height)
             poweron_displayed = True
-            # time.sleep(3)
+            time.sleep(3)
             device.display(image)
 
 

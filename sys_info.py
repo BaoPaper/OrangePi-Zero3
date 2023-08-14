@@ -72,9 +72,6 @@ def show_poweron_text(draw, font_Big, width, height):
     # 创建一个可以在图像上绘制文本的 Draw 对象
     draw = ImageDraw.Draw(image_to_display)
 
-    # 在图像下方绘制文本 "Hello"
-    # draw.text((40, 44), "HELLO", font=font, fill=255)
-
     # 在屏幕上显示图像
     device.display(image_to_display)
 
@@ -134,7 +131,6 @@ def main():
                top += 12
                # 绘制分隔线
                draw.line((0, top, width, top), fill=255)
-               # top += 12
                draw.text((0, top), result, font=font_large, fill=255)
                pass
         

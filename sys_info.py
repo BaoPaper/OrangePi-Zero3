@@ -122,13 +122,13 @@ def main():
         if not poweron_displayed:       # 如果尚未显示开机信息
             show_poweron_text(draw, font_Big, width, height)
             poweron_displayed = True
-            time.sleep(3)
+            # time.sleep(3)
             device.display(image)
 
 
         if poweron_displayed and time.time() - last_switch_time >= 3:  # 等待3秒后开始切换显示内容
             # 如果显示系统信息
-            if showing_system_info:
+            # if showing_system_info:
                CPU, MemUsage, Disk, IP, cput = get_system_info()
 
                # 清除之前的内容
@@ -154,25 +154,25 @@ def main():
                # top += 12
                draw.text((0, top), result, font=font_small, fill=255)
                pass
-            else:
-               current_time = datetime.datetime.now().strftime("%H:%M:%S")
-               # 计算开机运行时间
-               uptime = datetime.datetime.now() - boot_time_datetime
+            # else:
+            #    current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            #    # 计算开机运行时间
+            #    uptime = datetime.datetime.now() - boot_time_datetime
 
-               draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
-               top = 0
-               # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
-               # top += 18
-               draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
-               top += 12
-               draw.text((0, top), result, font=font_small, fill=255)
-               # draw.line((0, 17.5, width, 17.5), fill=255)
-               # top += 16
-               # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
+            #    draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
+            #    top = 0
+            #    # draw.text((0, top), "OrangePi Zero 3", font=font_large, fill=255)
+            #    # top += 18
+            #    draw.text((0, top), "Local Time: " + current_time, font=font_small, fill=255)
+            #    top += 12
+            #    draw.text((0, top), result, font=font_small, fill=255)
+            #    # draw.line((0, 17.5, width, 17.5), fill=255)
+            #    # top += 16
+            #    # draw.text((32, top), f"田鼠本鼠", font=font_large, fill=255)
                pass
         
         # 如果距离天气刷新时间超过900秒，刷新天气信息
-        if time.time() - last_switch_time >= 10:
+        if time.time() - last_switch_time >= 900:
             result = get_weather(city_name)
 
         # 在 OLED 屏幕上显示图像

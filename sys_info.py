@@ -112,26 +112,25 @@ def main():
 
         if poweron_displayed and time.time() - last_switch_time >= 3:  # 等待3秒后开始切换显示内容
             # 如果显示系统信息
-            # if showing_system_info:
-               CPU, MemUsage, Disk, IP, cput = get_system_info()
+            CPU, MemUsage, Disk, IP, cput = get_system_info()
 
-               # 清除之前的内容
-               draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
-               top = 0
+            # 清除之前的内容
+            draw.rectangle((0, 0, width - 1, height - 1), outline=0, fill=0)
+            top = 0
 
-               # 重新绘制数据
-               draw.text((0, top), CPU, font=font_small, fill=255)
-               draw.text((80, top), cput + " °C", font=font_small, fill=255)
-               top += 12
-               draw.text((0, top), MemUsage.replace('%', '% '), font=font_small, fill=255)
-               top += 12
-               draw.text((0, top), Disk, font=font_small,fill=255)
-               top += 12
-               draw.text((0, top), "IP: " + IP, font=font_small, fill=255)
-               top += 12
-               # 绘制分隔线
-               draw.line((0, top, width, top), fill=255)
-               draw.text((0, top), result, font=font_large, fill=255)
+            # 重新绘制数据
+            draw.text((0, top), CPU, font=font_small, fill=255)
+            draw.text((80, top), cput + " °C", font=font_small, fill=255)
+            top += 12
+            draw.text((0, top), MemUsage.replace('%', '% '), font=font_small, fill=255)
+            top += 12
+            draw.text((0, top), Disk, font=font_small,fill=255)
+            top += 12
+            draw.text((0, top), "IP: " + IP, font=font_small, fill=255)
+            top += 12
+            # 绘制分隔线
+            draw.line((0, top, width, top), fill=255)
+            draw.text((0, top), result, font=font_large, fill=255)
         
         # 如果距离天气刷新时间超过900秒，刷新天气信息
         if time.time() - last_switch_time >= 900:

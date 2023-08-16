@@ -146,6 +146,7 @@ def main():
         # 在 OLED 屏幕上显示图像
         device.display(image)
         time.sleep(5)
+        last_switch_time = time.time()  # 刷新天气更新时间
 
 if __name__ == "__main__":
     try:
